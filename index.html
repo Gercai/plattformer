@@ -16,20 +16,73 @@
 
         <section class="head">
             <article>
-                This is an article 
-
+                <h1>Playing with the Canvas</h1>
             </article>
          </section>
-
+         
     </header>
 <body>
 <h2>Game</h2>
-    <canvas>
+<!-- Canvas für Games oder Darstellungen -->
+<canvas id="myCanvas" width="400" height="200"
+    style="border: 1px solid black"> 
+</canvas>
+
+<button onclick="fill()">fill</button>
+<!-- <script src="./src/script/canvas.js"></script> -->
+
+<script>
 
 
+// function draw(){
+//     var canvas = document.getElementById('myCanvas');
+//     if(canvas.getContext){
+//         var ctx = canvas.getContext('2d');
+//         ctx.beginPath();
+//         ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+//         ctx.stroke();
 
-    </canvas>
-<script src="./src/script/canvas.js"></script>l
+//     }
+// }
+
+var full = 1;
+var canvas = document.getElementById("myCanvas");
+
+window.addEventListener( "keydown", DoKeyDown, true);
+
+function DoKeyDown(e) {
+    if(e.keyCode == 39){
+    fill();
+    } else if (e.keyCode == 37) {
+        empty();
+    }
+    else {
+        alert(e.keyCode);
+    }
+
+}
+
+
+function kreis(){
+var ctx = canvas.getContext("2d");
+ctx.beginPath();
+ctx.arc(95, 55, 50, 0, 0.1 * full * Math.PI);
+ctx.stroke();
+}
+
+function fill(){
+    full = full + 1;
+    kreis();
+}
+
+function empty(){
+    if (full > 0){
+    full = full - 1;
+    kreis();
+    }
+}
+
+</script>
 
 </body>
 </html>
