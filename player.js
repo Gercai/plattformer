@@ -5,11 +5,10 @@
 //         ctx.beginPath();
 //         ctx.arc(95, 50, 40, 0, 2 * Math.PI);
 //         ctx.stroke();
-
 //     }
 // }
 
-var full = 1;
+
 var canvas = document.getElementById("myCanvas");
 
 window.addEventListener( "keydown", gameLoop, true);
@@ -48,17 +47,15 @@ function gameLoop() {
     }
     if (keyState[38]){
         yMove -= 1;
+
         moveCircle();
     }
-
     // redraw/reposition your object here
     // also redraw/animate any objects not controlled by the user
-
-    setTimeout(gameLoop, 10);
-
+    loadScore();
+    setTimeout(gameLoop, 1000);
 }    
 
- gameLoop();
 
 player1 = {
 
@@ -88,15 +85,14 @@ function moveCircle(){
 ctx.clearRect(0,0,1400,1000);
 
 
-xAxis = xAxis +xMove;
-yAxis = yAxis +yMove;
+xAxis = xAxis + xMove;
+yAxis = yAxis + yMove;
 
 xMove = 0;
 yMove = 0;
 
 kreis2();
 }
-
 
 function kreis(){
 ctx.beginPath();
@@ -107,6 +103,10 @@ ctx.stroke();
 function fillCircle(){
     full = full + 1;
     kreis();
+}
+
+function loadScore(){
+    document.getElementById("score").innerHTML= "x: " +xAxis + " y: " +    yAxis;
 }
 
 function empty(){
@@ -125,22 +125,14 @@ for (var column = 0; column < map.columns; column++) {
     }
   }
 
-
-
-ctx.fillStyle = 'orange';
-ctx.fillStyle = '#FFA500';
-ctx.fillStyle = 'rgb(255, 165, 0)';
-ctx.fillStyle = 'rgba(255, 165, 0, 1)';
-
 function draw() {
     var ctx = document.getElementById('myCanvas').getContext('2d');
     for (var i = 0; i < 70; i++) {
-      for (var j = 0; j < 70; j++) {
-        ctx.fillStyle = 'rgb(' + Math.floor(255 - 5.5 * i) + ', ' +
-                         Math.floor(255 - 5.5 * j) + ', 0)';
+      for (var j = 0; j < 50; j++) {
+        ctx.fillStyle = 'rgb(' + Math.floor(100 - 5.5 * j) + ', ' +
+                         Math.floor(255 - 12.5 * i) + ', 0)';
         ctx.fillRect(j * 25, i * 25, 25, 25);
       } 
     }
   }
 
- 
